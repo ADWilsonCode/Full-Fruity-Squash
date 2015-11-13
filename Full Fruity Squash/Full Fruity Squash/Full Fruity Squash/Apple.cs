@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Full_Fruity_Squash.Fuit_Classes
 {
-    class Apple
+    public class Apple : Fruit
     {
     }
 }
