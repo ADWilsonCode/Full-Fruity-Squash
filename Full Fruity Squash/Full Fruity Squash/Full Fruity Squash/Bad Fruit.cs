@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Full_Fruity_Squash.Fuit_Classes
 {
-    class Bad_Fruit
+    public class Bad_Fruit : Sprite
     {
     }
 }
