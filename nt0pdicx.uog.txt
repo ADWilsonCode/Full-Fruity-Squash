@@ -1,0 +1,21 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Committer: mrmoose182 <482721@FEN-052-076.adir.hull.ac.uk>
+#
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   Full Fruity Squash/.svn/wc.db
+#	new file:   Full Fruity Squash/Full Fruity Squash/Full Fruity Squash/AppleBlender.cs
+#	new file:   Full Fruity Squash/Full Fruity Squash/Full Fruity Squash/BananaBlender.cs
+#	new file:   Full Fruity Squash/Full Fruity Squash/Full Fruity Squash/Bin.cs
+#	new file:   Full Fruity Squash/Full Fruity Squash/Full Fruity Squash/Blender.cs
+#	modified:   Full Fruity Squash/Full Fruity Squash/Full Fruity Squash/Fruit Classes/Apple.cs
+#	modified:   Full Fruity Squash/Full Fruity Squash/Full Fruity Squash/Fruit Classes/Bad Fruit.cs
+#	modified:   Full Fruity Squash/Full Fruity Squash/Full Fruity Squash/Full Fruity Squash.csproj
+#	new file:   Full Fruity Squash/Full Fruity Squash/Full Fruity Squash/OrangeBlender.cs
+#
+
