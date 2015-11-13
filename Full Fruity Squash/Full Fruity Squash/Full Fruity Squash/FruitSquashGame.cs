@@ -19,6 +19,14 @@ namespace Full_Fruity_Squash
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        Sprite Background;
+
+        Orange pickOrange;
+        Apple pickApple;
+        Banana pickBanna;
+
+
+
         public FruitSquashGame()
         {
             graphics = new GraphicsDeviceManager(this);
