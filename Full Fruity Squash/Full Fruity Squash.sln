@@ -1,9 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Full Fruity Squash", "Full Fruity Squash\Full Fruity Squash\Full Fruity Squash.csproj", "{498BAC90-5250-47E3-95AD-81D479952D68}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "Full Fruity SquashContent", "Full Fruity Squash\Full Fruity SquashContent\Full Fruity SquashContent.contentproj", "{9D823799-7C4E-4A3F-88D1-A6BB129CD081}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Full Fruity SquashContent", "Full Fruity Squash\Full Fruity SquashContent\Full Fruity SquashContent.contentproj", "{9D823799-7C4E-4A3F-88D1-A6BB129CD081}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
