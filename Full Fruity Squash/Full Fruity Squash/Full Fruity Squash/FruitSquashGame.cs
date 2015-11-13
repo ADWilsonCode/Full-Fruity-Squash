@@ -25,7 +25,9 @@ namespace Full_Fruity_Squash
         Apple pickApple;
         Banana pickBanna;
 
-
+        Rotten_Apple dumpApple;
+        Rotten_Banana dumpBanna;
+        Rotten_Orange dumpOrange;
 
         public FruitSquashGame()
         {
@@ -55,7 +57,13 @@ namespace Full_Fruity_Squash
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+          Background = new Sprite (
+                Content.Load<Texture2D>("Background"),
+                Vector2.Zero);
+
+          pickOrange = new Orange(
+              Content.Load<Texture2D>("OrangeBall"),
+              Vector2.Zero);
         }
 
         /// <summary>
