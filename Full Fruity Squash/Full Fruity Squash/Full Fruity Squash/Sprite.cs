@@ -14,7 +14,7 @@ namespace Full_Fruity_Squash
 
         protected Vector2 position;
         protected Vector2 velocity;
-
+ 
         protected Vector2 center;
         protected Vector2 origin;
 

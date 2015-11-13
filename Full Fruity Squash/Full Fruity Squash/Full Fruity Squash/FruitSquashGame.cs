@@ -29,6 +29,14 @@ namespace Full_Fruity_Squash
         Rotten_Banana dumpBanna;
         Rotten_Orange dumpOrange;
 
+        public enum gamestate
+        {
+            startscreen,
+            playingGame,
+            gameover
+        }
+        
+        gamestate currentgamestate = gamestate.startscreen;
         public FruitSquashGame()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -63,6 +71,26 @@ namespace Full_Fruity_Squash
 
           pickOrange = new Orange(
               Content.Load<Texture2D>("OrangeBall"),
+              Vector2.Zero);
+
+          pickBanna = new Banana(
+              Content.Load<Texture2D>("YellowBall"),
+              Vector2.Zero);
+
+          pickApple = new Apple(
+              Content.Load<Texture2D>("GreenBall"),
+              Vector2.Zero);
+
+          dumpApple = new Rotten_Apple(
+              Content.Load<Texture2D>("BlackBall"),
+              Vector2.Zero);
+
+          dumpBanna = new Rotten_Banana(
+              Content.Load<Texture2D>("BlackBall"),
+              Vector2.Zero);
+
+          dumpOrange = new Rotten_Orange(
+              Content.Load<Texture2D>("BlackBall"),
               Vector2.Zero);
         }
 
