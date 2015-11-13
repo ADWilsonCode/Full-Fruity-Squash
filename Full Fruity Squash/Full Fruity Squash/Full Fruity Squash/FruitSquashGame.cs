@@ -29,18 +29,23 @@ namespace Full_Fruity_Squash
         Rotten_Banana dumpBanna;
         Rotten_Orange dumpOrange;
 
+        Button BackButton;
+        GraphicsDevice Device;
+
         public enum gamestate
         {
             startscreen,
             playingGame,
+            highScore,
             gameover
         }
         
-        gamestate currentgamestate = gamestate.startscreen;
+        gamestate currentgamestate = gamestate.highScore;
         public FruitSquashGame()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            IsMouseVisible = true;
         }
 
         /// <summary>
@@ -62,6 +67,24 @@ namespace Full_Fruity_Squash
         /// </summary>
         protected override void LoadContent()
         {
+            Device = graphics.GraphicsDevice;
+            switch (currentgamestate)
+            {
+                case gamestate.startscreen:
+                    break;
+                case gamestate.playingGame:
+                    break;
+                case gamestate.highScore:
+                    Texture2D HighScoreBackButton = Content.Load<Texture2D>("HighScoreBack");
+                    BackButton = new Button(HighScoreBackButton, HighScoreBackButton, HighScoreBackButton, new Vector2(Device.PresentationParameters.BackBufferWidth / 2, Device.PresentationParameters.BackBufferHeight / 2));
+                    BackButton.OnPress += new EventHandler(HighScoreBackButton_Clicked);
+                    break;
+                case gamestate.gameover:
+                    break;
+                default:
+                    break;
+            }
+
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
@@ -69,17 +92,17 @@ namespace Full_Fruity_Squash
                 Content.Load<Texture2D>("Background"),
                 Vector2.Zero);
 
-          pickOrange = new Orange(
-              Content.Load<Texture2D>("OrangeBall"),
-              Vector2.Zero);
+          //pickOrange = new Orange(
+          //    Content.Load<Texture2D>("OrangeBall"),
+          //    Vector2.Zero);
 
-          pickBanna = new Banana(
-              Content.Load<Texture2D>("YellowBall"),
-              Vector2.Zero);
+          //pickBanna = new Banana(
+          //    Content.Load<Texture2D>("YellowBall"),
+          //    Vector2.Zero);
 
-          pickApple = new Apple(
-              Content.Load<Texture2D>("GreenBall"),
-              Vector2.Zero);
+          //pickApple = new Apple(
+          //    Content.Load<Texture2D>("GreenBall"),
+          //    Vector2.Zero);
 
           dumpApple = new Rotten_Apple(
               Content.Load<Texture2D>("BlackBall"),
@@ -92,6 +115,13 @@ namespace Full_Fruity_Squash
           dumpOrange = new Rotten_Orange(
               Content.Load<Texture2D>("BlackBall"),
               Vector2.Zero);
+        }
+
+        private void HighScoreBackButton_Clicked(object sender, EventArgs e)
+        {
+
+            currentgamestate = gamestate.startscreen;
+
         }
 
         /// <summary>
@@ -114,7 +144,20 @@ namespace Full_Fruity_Squash
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
+            switch (currentgamestate)
+            {
+                case gamestate.startscreen:
+                    break;
+                case gamestate.playingGame:
+                    break;
+                case gamestate.highScore:
+                    BackButton.Update(gameTime);
+                    break;
+                case gamestate.gameover:
+                    break;
+                default:
+                    break;
+            }
 
             base.Update(gameTime);
         }
@@ -126,9 +169,23 @@ namespace Full_Fruity_Squash
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            spriteBatch.Begin();
 
-            // TODO: Add your drawing code here
-
+            switch (currentgamestate)
+            {
+                case gamestate.startscreen:
+                    break;
+                case gamestate.playingGame:
+                    break;
+                case gamestate.highScore:
+                    BackButton.Draw(spriteBatch);
+                    break;
+                case gamestate.gameover:
+                    break;
+                default:
+                    break;
+            }
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }

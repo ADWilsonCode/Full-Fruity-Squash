@@ -78,7 +78,7 @@ namespace Full_Fruity_Squash
 
     }
 
-    class PersonDetails
+    public class PersonDetails
     {
         public PersonDetails(string InName, int INScore)
         {
