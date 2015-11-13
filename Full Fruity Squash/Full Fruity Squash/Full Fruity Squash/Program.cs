@@ -10,7 +10,7 @@ namespace Full_Fruity_Squash
         /// </summary>
         static void Main(string[] args)
         {
-            using (Game1 game = new Game1())
+            using (FruitSquashGame game = new FruitSquashGame())
             {
                 game.Run();
             }

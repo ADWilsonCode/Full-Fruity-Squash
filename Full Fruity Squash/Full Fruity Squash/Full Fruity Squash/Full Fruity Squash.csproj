@@ -107,9 +107,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Apple.cs" />
+    <Compile Include="Bad Fruit.cs" />
+    <Compile Include="Banana.cs" />
+    <Compile Include="Fruit.cs" />
+    <Compile Include="Orange.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Game1.cs" />
+    <Compile Include="FruitSquashGame.cs" />
+    <Compile Include="Rotten Apple.cs" />
+    <Compile Include="Rotten Banana.cs" />
+    <Compile Include="Rotten Orange.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
