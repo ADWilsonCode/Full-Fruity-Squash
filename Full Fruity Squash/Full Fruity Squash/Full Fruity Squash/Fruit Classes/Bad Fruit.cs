@@ -26,8 +26,6 @@ namespace Full_Fruity_Squash
 
             center = new Vector2(position.X + texture.Width / 2, position.Y + texture.Height / 2);
             origin = new Vector2(texture.Width / 2, texture.Height / 2);
-
-           
         }
 
         public bool isAlive
@@ -38,16 +36,20 @@ namespace Full_Fruity_Squash
 
         protected virtual void falling()
         {
+            velocity = new Vector2(0, 5);
+            position += velocity;
             //toDo add falling code heer
         }
 
         protected virtual void caught()
         {
+            
             //toDo add caught code here
         }
 
         protected virtual void binned()
         {
+            isAlive = false;
            //toDo add binned code here
         }
 
@@ -56,15 +58,15 @@ namespace Full_Fruity_Squash
             switch (currentBadFruitState)
             {
                 case badFruitState.badFalling :
-
+                    falling();
                     break;
 
                 case badFruitState.badCaught :
-                    
+                    caught();
                     break;
 
                 case badFruitState.badBinned :
-
+                    binned();
                     break;
             }
             base.Update(gameTime);
