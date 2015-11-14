@@ -36,18 +36,23 @@ namespace Full_Fruity_Squash
         Bin bin1;
         Bin bin2;
 
-        public enum gamestate
-        {
-            startscreen,
-            playingGame,
-            gameover
-        }
-        
-        gamestate currentgamestate = gamestate.startscreen;
+        Button BackButton;
+        GraphicsDevice Device;
+
+         public enum gamestate
+         {
+             startscreen,
+             playingGame,
+             highScore,
+             gameover
+         }
+
+        gamestate currentgamestate = gamestate.highScore;
         public FruitSquashGame()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            IsMouseVisible = true;
         }
 
         /// <summary>
@@ -69,6 +74,27 @@ namespace Full_Fruity_Squash
         /// </summary>
         protected override void LoadContent()
         {
+
+            Device = graphics.GraphicsDevice;
+            switch (currentgamestate)
+            {
+                case gamestate.startscreen:
+                    break;
+                case gamestate.playingGame:
+                    break;
+                case gamestate.highScore:
+                    Texture2D HighScoreBackButton = Content.Load<Texture2D>("HighScoreBack");
+                    BackButton = new Button(HighScoreBackButton, HighScoreBackButton, HighScoreBackButton, new Vector2(Device.PresentationParameters.BackBufferWidth / 2, Device.PresentationParameters.BackBufferHeight / 2));
+                    BackButton.OnPress += new EventHandler(HighScoreBackButton_Clicked);
+                    break;
+                case gamestate.gameover:
+                    break;
+                default:
+                   break;
+            }
+
+
+            
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
@@ -81,7 +107,7 @@ namespace Full_Fruity_Squash
               Vector2.Zero);
 
           pickBanna = new Banana(
-              Content.Load<Texture2D>("bananas"),
+              Content.Load<Texture2D>("bananas-03"),
               Vector2.Zero);
 
           pickApple = new Apple(
@@ -121,6 +147,14 @@ namespace Full_Fruity_Squash
         Vector2.Zero);
         }
 
+
+        private void HighScoreBackButton_Clicked(object sender, EventArgs e)
+        {
+
+            currentgamestate = gamestate.startscreen;
+
+        }
+
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
         /// all content.
@@ -141,7 +175,20 @@ namespace Full_Fruity_Squash
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
+             switch (currentgamestate)
+            {
+                case gamestate.startscreen:
+                    break;
+                case gamestate.playingGame:
+                    break;
+                case gamestate.highScore:
+                    BackButton.Update(gameTime);
+                    break;
+                case gamestate.gameover:
+                    break;
+                default:
+                    break;
+            }
 
             base.Update(gameTime);
         }
@@ -154,7 +201,23 @@ namespace Full_Fruity_Squash
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            spriteBatch.Begin();
+
+            switch (currentgamestate)
+            {
+                case gamestate.startscreen:
+                    break;
+                case gamestate.playingGame:
+                    break;
+                case gamestate.highScore:
+                    BackButton.Draw(spriteBatch);
+                    break;
+                case gamestate.gameover:
+                    break;
+                default:
+                    break;
+            }
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
