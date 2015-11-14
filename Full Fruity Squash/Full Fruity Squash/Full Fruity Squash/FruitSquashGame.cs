@@ -36,8 +36,11 @@ namespace Full_Fruity_Squash
         Bin bin1;
         Bin bin2;
 
+        //high score Stuff
         Button BackButton;
         GraphicsDevice Device;
+        SpriteFont HighScoreFont;
+        List<PersonDetails> PeopleList;
 
          public enum gamestate
          {
@@ -63,7 +66,19 @@ namespace Full_Fruity_Squash
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            HighScore HighScoreList = new HighScore();
+
+            if (!HighScoreList.LoadPeople())
+            {
+                PeopleList = HighScoreList.GetSetTopFivePeople;
+                for (int x = 0; x < 5; ++x)
+                {
+                    PeopleList.Add(new PersonDetails("To Be Filled", 0));
+                }
+
+                HighScoreList.SavePeople();
+            }
+            PeopleList = HighScoreList.GetSetTopFivePeople;
 
             base.Initialize();
         }
@@ -84,8 +99,10 @@ namespace Full_Fruity_Squash
                     break;
                 case gamestate.highScore:
                     Texture2D HighScoreBackButton = Content.Load<Texture2D>("HighScoreBack");
-                    BackButton = new Button(HighScoreBackButton, HighScoreBackButton, HighScoreBackButton, new Vector2(Device.PresentationParameters.BackBufferWidth / 2, Device.PresentationParameters.BackBufferHeight / 2));
+                    BackButton = new Button(HighScoreBackButton, HighScoreBackButton, HighScoreBackButton, new Vector2(Device.PresentationParameters.BackBufferWidth / 3+10, Device.PresentationParameters.BackBufferHeight / 2));
                     BackButton.OnPress += new EventHandler(HighScoreBackButton_Clicked);
+
+                    HighScoreFont = Content.Load<SpriteFont>("HighScoreText");
                     break;
                 case gamestate.gameover:
                     break;
@@ -155,6 +172,16 @@ namespace Full_Fruity_Squash
 
         }
 
+        private void DrawHighScores()
+        {
+            int Yaxis = 60;
+            for(int x = 0; x<PeopleList.Count;++x)
+            {
+                spriteBatch.DrawString(HighScoreFont, PeopleList[x].NameGetSet + " --> " + PeopleList[x].ScoreGetSet, new Vector2(Device.PresentationParameters.BackBufferWidth / 3 +30, Yaxis), Color.Black);
+                Yaxis += 45;
+            }
+        }
+
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
         /// all content.
@@ -211,6 +238,7 @@ namespace Full_Fruity_Squash
                     break;
                 case gamestate.highScore:
                     BackButton.Draw(spriteBatch);
+                    DrawHighScores();
                     break;
                 case gamestate.gameover:
                     break;
