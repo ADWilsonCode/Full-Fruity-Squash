@@ -154,6 +154,9 @@ namespace Full_Fruity_Squash
                     BackButton = new Button(HighScoreBackButton, HighScoreBackButton, HighScoreBackButton, new Vector2(Device.PresentationParameters.BackBufferWidth / 3 + 10, Device.PresentationParameters.BackBufferHeight / 2), new Rectangle(0, 0, 0, 0), ScreenWidth, ScreenHeight);
                     BackButton.OnPress += new EventHandler(HighScoreBackButton_Clicked);
 
+                    TitleScreen = Content.Load<Texture2D>("assests for fruity full squash/Title");
+                    TitleScreenRec = new Rectangle(0, 0, ScreenWidth, ScreenHeight);
+
                     HighScoreTitle = Content.Load<SpriteFont>("Title");
                     HighScoreFont = Content.Load<SpriteFont>("HighScoreText");
                     break;
@@ -206,7 +209,7 @@ namespace Full_Fruity_Squash
           BatPl = new Player(
             Content.Load<Texture2D>("assests for fruity full squash/paddle"),
            new Vector2(170, 310),
-            new Rectangle(0, 0, 40, 40),
+            new Rectangle(0, 0,5, 5),
             ScreenWidth, ScreenHeight);
 
           bananaBlender = new BananaBlender(
@@ -298,7 +301,7 @@ namespace Full_Fruity_Squash
             int Yaxis = 80;
             for(int x = 0; x<PeopleList.Count;++x)
             {
-                spriteBatch.DrawString(HighScoreFont, PeopleList[x].NameGetSet + " --> " + PeopleList[x].ScoreGetSet, new Vector2(Device.PresentationParameters.BackBufferWidth / 3 +30, Yaxis), Color.Black);
+                spriteBatch.DrawString(HighScoreFont, PeopleList[x].NameGetSet + " --> " + PeopleList[x].ScoreGetSet, new Vector2(Device.PresentationParameters.BackBufferWidth / 2 +30, Yaxis), Color.Blue);
                 Yaxis += 45;
             }
         }
@@ -324,7 +327,7 @@ namespace Full_Fruity_Squash
         public int YPositionGenerator()
         {
             Device = graphics.GraphicsDevice;
-            int Position = YPosition.Next(-200,-100);
+            int Position = YPosition.Next(-400,-300);
 
             return Position;
         }
@@ -359,6 +362,7 @@ namespace Full_Fruity_Squash
             {
                 FType = FruitType();
                 XPos = XPositionGenerator();
+                Ypos = YPositionGenerator();
                 TimeDrop = TimeGenerator(WaveLengthOne);
 
                 switch (FType)
@@ -421,9 +425,18 @@ namespace Full_Fruity_Squash
                         elapsed = 0f;
                         currentgamestate = gamestate.startscreen;
                     }
-                    foreach (Fruit Fruit in WaveOneList)
-                    {
-                            Fruit.Update(gameTime);
+                    for (int i = 0; i < WaveOneList.Count; i++)
+			       {
+                            WaveOneList[i].Update(gameTime);
+                        //if(WaveOneList[i].intersectWith(BatPl))
+                        //{
+                            //WaveOneList[i].Stop = true;
+                        //}
+                        if (WaveOneList[i].position.Y >= BatPl.position.Y  && (WaveOneList[i].position.X >= BatPl.position.X && WaveOneList[i].position.X <= BatPl.position.X + 150))
+                        {
+                            
+                            //Fruit.position = BatPl.position;
+                        }
                     }
 
                     break;
@@ -471,9 +484,11 @@ namespace Full_Fruity_Squash
                         
                     break;
                 case gamestate.highScore:
+                    spriteBatch.Draw(TitleScreen, TitleScreenRec, Color.White);
                     BackButton.Draw(spriteBatch);
                     DrawHighScores();
-                    spriteBatch.DrawString(HighScoreTitle, "High Score", new Vector2(Device.PresentationParameters.BackBufferWidth / 3 +20, Device.PresentationParameters.BackBufferHeight / 30), Color.Black);
+                    spriteBatch.DrawString(HighScoreTitle, "High Score", new Vector2(Device.PresentationParameters.BackBufferWidth / 2 +20, Device.PresentationParameters.BackBufferHeight / 30), Color.Orange);
+                    
                     break;
                 case gamestate.ScoreEntry:
                     TextEntry.Draw(spriteBatch,gameTime);

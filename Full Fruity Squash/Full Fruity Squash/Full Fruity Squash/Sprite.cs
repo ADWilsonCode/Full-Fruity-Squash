@@ -72,5 +72,17 @@ namespace Full_Fruity_Squash
         {
             spriteBatch.Draw(texture, center, null, color, rotation, origin, 1.0f, SpriteEffects.None, 0);
         }
+
+        public float Distance(Sprite t)
+        {
+            Vector2 Object = t.position;
+            Vector2 fruit = position;
+
+            float a = fruit.X - Object.X;
+            float b = fruit.X - Object.Y;
+
+
+            return (float)Math.Sqrt((a * a) + (b * b));
+        }
     }
 }

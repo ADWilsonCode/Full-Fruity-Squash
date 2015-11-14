@@ -26,13 +26,19 @@ namespace Full_Fruity_Squash
             TimeDrop = inTimeDrop;
         }
 
+        public bool Stop;
 
         public override void Update(GameTime gameTime)
        {
-
-           velocity = new Vector2(0, 2);
-           position += velocity;  
-            
+           if (Stop)
+           {
+               velocity = new Vector2(0, 0);
+           }
+           else
+           {
+               velocity = new Vector2(0, 2);
+               position += velocity;
+           }
 
             base.Update(gameTime);
         }
