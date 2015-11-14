@@ -10,15 +10,25 @@ namespace Full_Fruity_Squash
 {
     public class Sprite
     {
-        protected Texture2D texture;
+        public Texture2D texture;
 
-        protected Vector2 position;
-        protected Vector2 velocity;
- 
-        protected Vector2 center;
-        protected Vector2 origin;
+        public Vector2 position;
+        public Vector2 velocity;
 
-        protected float rotation;
+        public Vector2 center;
+        public Vector2 origin;
+
+        public float rotation;
+
+        public Rectangle rectangle;
+
+        public int ScreenWidth;
+        public int ScreenHeight;
+
+        public bool intersectWith(Sprite T)
+        {
+            return rectangle.Intersects(T.rectangle);
+        }
 
         public Vector2 Position
         {
@@ -29,11 +39,17 @@ namespace Full_Fruity_Squash
             get { return center; }
         }
 
-        public Sprite(Texture2D tex, Vector2 pos)
+        public Sprite(Texture2D tex, Vector2 pos, Rectangle rec, int inScreenWidth, int inScreenHeight)
         {
             texture = tex;
 
             position = pos;
+
+            rectangle = rec;
+
+            ScreenWidth = inScreenWidth;
+            ScreenHeight = inScreenHeight;
+
             velocity = Vector2.Zero;
 
             center = new Vector2(position.X + texture.Width / 2, position.Y + texture.Height / 2);
@@ -49,7 +65,7 @@ namespace Full_Fruity_Squash
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, center, null, Color.White,
-                rotation, origin, 1.0f, SpriteEffects.None, 0);
+            rotation, origin, 1.0f, SpriteEffects.None, 0);
         }
 
         public virtual void Draw(SpriteBatch spriteBatch, Color color)

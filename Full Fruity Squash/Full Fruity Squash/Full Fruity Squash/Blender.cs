@@ -9,8 +9,8 @@ namespace Full_Fruity_Squash
 {
     class Blender : Sprite
     {
-         public Blender(Texture2D tex, Vector2 pos) 
-            : base (tex, pos)
+        public Blender(Texture2D tex, Vector2 pos, Rectangle rec, int inScreenWidth, int inScreenHeight)
+            : base(tex, pos, rec, inScreenWidth, inScreenHeight)
         {
             texture = tex;
             position = pos;
@@ -19,14 +19,14 @@ namespace Full_Fruity_Squash
             origin = new Vector2(texture.Width / 2, texture.Height / 2);
         }
 
-         public override void Update(GameTime gameTime)
-         {
-             base.Update(gameTime);
-         }
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+        }
 
-         public override void Draw(SpriteBatch spriteBatch)
-         {
-             base.Draw(spriteBatch);
-         }
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch);
+        }
     }
 }

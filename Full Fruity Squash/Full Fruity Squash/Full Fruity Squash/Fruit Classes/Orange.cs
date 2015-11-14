@@ -10,32 +10,17 @@ namespace Full_Fruity_Squash
 {
     public class Orange : Fruit
     {
-        public Orange(Texture2D tex, Vector2 pos)
-            : base(tex, pos)
+        public Orange(Texture2D tex, Vector2 pos, Rectangle rec, int inScreenWidth, int inScreenHeight, float inTimeDrop)
+            : base(tex, pos, rec, inScreenWidth, inScreenHeight, inTimeDrop)
         {
             texture = tex;
             position = pos;
             velocity = Vector2.Zero;
             center = new Vector2(position.X + texture.Width / 2, position.Y + texture.Height / 2);
             origin = new Vector2(texture.Width / 2, texture.Height / 2);
-            currentState = fruitState.falling;
-            isAlive = true;
+            
         }
 
-        public override void Fall(GameTime gameTime)
-        {
-            base.Fall(gameTime);
-        }
-
-        public override void Caught(GameTime gameTime)
-        {
-            base.Caught(gameTime);
-        }
-
-        public override void Dropped(GameTime gameTime)
-        {
-            base.Dropped(gameTime);
-        }
 
         public override void Update(GameTime gameTime)
         {

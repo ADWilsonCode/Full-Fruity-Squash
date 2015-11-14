@@ -9,8 +9,8 @@ namespace Full_Fruity_Squash
 {
     public class Rotten_Orange : Bad_Fruit
     {
-         public Rotten_Orange(Texture2D tex, Vector2 pos) 
-            : base (tex, pos)
+        public Rotten_Orange(Texture2D tex, Vector2 pos, Rectangle rec, int inScreenWidth, int inScreenHeight, float inTimeDrop)
+            : base(tex, pos, rec, inScreenWidth, inScreenHeight, inTimeDrop)
         {
             texture = tex;
             position = pos;

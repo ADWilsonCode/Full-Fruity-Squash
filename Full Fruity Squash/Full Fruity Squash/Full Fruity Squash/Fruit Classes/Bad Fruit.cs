@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Full_Fruity_Squash
 {
-    public class Bad_Fruit : Sprite
+    public class Bad_Fruit : Fruit
     {
         public enum badFruitState
         {
@@ -16,56 +16,46 @@ namespace Full_Fruity_Squash
             badBinned,
         }
 
-
         badFruitState currentBadFruitState = badFruitState.badFalling;
-        public Bad_Fruit(Texture2D tex, Vector2 pos) 
-            : base (tex, pos)
+        public Bad_Fruit(Texture2D tex, Vector2 pos, Rectangle rec, int inScreenWidth, int inScreenHeight, float inTimeDrop)
+            : base( tex,  pos,  rec,  inScreenWidth,  inScreenHeight,  inTimeDrop)
         {
             texture = tex;
             position = pos;
 
             center = new Vector2(position.X + texture.Width / 2, position.Y + texture.Height / 2);
             origin = new Vector2(texture.Width / 2, texture.Height / 2);
+            TimeDrop = inTimeDrop;
         }
 
         public bool isAlive
         {
-            get { return isAlive;}
-            set {isAlive =  value;}
+            get { return isAlive; }
+            set { isAlive = value; }
         }
 
-        protected virtual void falling()
-        {
-            velocity = new Vector2(0, 5);
-            position += velocity;
-            //toDo add falling code heer
-        }
 
-        protected virtual void caught()
+        public virtual void caught()
         {
-            
+
             //toDo add caught code here
         }
 
-        protected virtual void binned()
+        public virtual void binned()
         {
             isAlive = false;
-           //toDo add binned code here
+            //toDo add binned code here
         }
 
         public override void Update(GameTime gameTime)
         {
             switch (currentBadFruitState)
             {
-                case badFruitState.badFalling :
-                    falling();
-                    break;
-
-                case badFruitState.badCaught :
+                case badFruitState.badCaught:
                     caught();
                     break;
 
-                case badFruitState.badBinned :
+                case badFruitState.badBinned:
                     binned();
                     break;
             }

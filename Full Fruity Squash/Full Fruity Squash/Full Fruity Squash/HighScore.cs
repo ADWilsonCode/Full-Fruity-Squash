@@ -54,7 +54,7 @@ namespace Full_Fruity_Squash
             System.IO.TextWriter textOut = null;
             try
             {
-
+                System.IO.File.WriteAllText(filename, string.Empty);
                 textOut = new System.IO.StreamWriter(filename);
                 textOut.WriteLine(TopFivePeople.Count());
                 foreach (PersonDetails People in TopFivePeople) // Save all the people

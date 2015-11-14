@@ -9,8 +9,8 @@ namespace Full_Fruity_Squash
 {
     class AppleBlender : Blender
     {
-         public AppleBlender(Texture2D tex, Vector2 pos) 
-            : base (tex, pos)
+        public AppleBlender(Texture2D tex, Vector2 pos, Rectangle rec, int inScreenWidth, int inScreenHeight)
+            : base(tex, pos, rec, inScreenWidth, inScreenHeight)
         {
             texture = tex;
             position = pos;

@@ -121,6 +121,7 @@
     <Compile Include="HighScore.cs" />
     <Compile Include="KeyboardLayout.cs" />
     <Compile Include="OrangeBlender.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="FruitSquashGame.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="Fruit Classes\Rotten Orange.cs" />
     <Compile Include="Sprite.cs" />
     <Compile Include="TextBoxClass.cs" />
+    <Compile Include="WaveManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

@@ -29,6 +29,10 @@ namespace Full_Fruity_Squash
         private Texture2D hoverTexture;
         private Texture2D pressedTexture;
 
+        public Rectangle rec;
+
+
+
         // A rectangle that covers the button.
         private Rectangle bounds;
 
@@ -47,8 +51,8 @@ namespace Full_Fruity_Squash
         /// <param name="hoverTexture">The texture drawn when the mouse is over the button.</param>
         /// <param name="pressedTexture">The texture drawn when the button has been pressed.</param>
         /// <param name="position">The position where the button will be drawn.</param>
-        public Button(Texture2D texture, Texture2D hoverTexture, Texture2D pressedTexture, Vector2 position)
-            : base(texture, position)
+        public Button(Texture2D texture, Texture2D hoverTexture, Texture2D pressedTexture, Vector2 position, Rectangle rec, int inScreenWidth, int inScreenHeight)
+            : base(texture, position, rec, inScreenWidth, inScreenHeight)
         {
             this.hoverTexture = hoverTexture;
             this.pressedTexture = pressedTexture;
@@ -147,3 +151,4 @@ namespace Full_Fruity_Squash
         }
     }
 }
+

@@ -10,8 +10,8 @@ namespace Full_Fruity_Squash
     public class Rotten_Banana : Bad_Fruit
     {
 
-         public Rotten_Banana(Texture2D tex, Vector2 pos) 
-            : base (tex, pos)
+        public Rotten_Banana(Texture2D tex, Vector2 pos, Rectangle rec, int inScreenWidth, int inScreenHeight, float inTimeDrop)
+            : base(tex, pos, rec, inScreenWidth, inScreenHeight, inTimeDrop)
         {
             texture = tex;
             position = pos;
