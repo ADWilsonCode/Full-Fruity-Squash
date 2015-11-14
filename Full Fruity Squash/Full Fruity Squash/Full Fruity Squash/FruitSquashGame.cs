@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System.Windows.Input;
 
 namespace Full_Fruity_Squash
 {
@@ -42,15 +43,23 @@ namespace Full_Fruity_Squash
         SpriteFont HighScoreFont;
         List<PersonDetails> PeopleList;
 
+        // Score Entry
+        KeyboardDispatcher KeyBoardDispatcher;
+        TextBoxClass.TextBox TextEntry;
+        Button SubmitButton;
+        SpriteFont SubmitText;
+        SpriteFont HighScore;
+
          public enum gamestate
          {
              startscreen,
              playingGame,
              highScore,
+             ScoreEntry,
              gameover
          }
 
-        gamestate currentgamestate = gamestate.highScore;
+        gamestate currentgamestate = gamestate.ScoreEntry;
         public FruitSquashGame()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -80,6 +89,8 @@ namespace Full_Fruity_Squash
             }
             PeopleList = HighScoreList.GetSetTopFivePeople;
 
+            KeyBoardDispatcher = new KeyboardDispatcher(Window);
+
             base.Initialize();
         }
 
@@ -103,6 +114,22 @@ namespace Full_Fruity_Squash
                     BackButton.OnPress += new EventHandler(HighScoreBackButton_Clicked);
 
                     HighScoreFont = Content.Load<SpriteFont>("HighScoreText");
+                    break;
+                case gamestate.ScoreEntry:
+                    Texture2D EntryPoint = Content.Load<Texture2D>("button");
+                    HighScoreFont = Content.Load<SpriteFont>("HighScoreText");
+                    TextEntry = new TextBoxClass.TextBox(EntryPoint, EntryPoint, HighScoreFont);
+                    TextEntry.X = Device.PresentationParameters.BackBufferWidth / 2;
+                    TextEntry.Y = Device.PresentationParameters.BackBufferHeight/2 - 50;
+                    TextEntry.Width = 200;
+                    KeyBoardDispatcher.Subscriber = TextEntry;
+
+                    Texture2D SubmitScore = Content.Load<Texture2D>("buttonSubmitText");
+                    SubmitButton = new Button(SubmitScore, SubmitScore, SubmitScore, new Vector2(Device.PresentationParameters.BackBufferWidth / 3 + 10, Device.PresentationParameters.BackBufferHeight / 2));
+                    SubmitButton.OnPress += new EventHandler(SubmitButton_Clicked);
+
+                    SubmitText = Content.Load<SpriteFont>("HighScoreText");
+                    HighScore = Content.Load<SpriteFont>("HighScoreText");
                     break;
                 case gamestate.gameover:
                     break;
@@ -172,6 +199,13 @@ namespace Full_Fruity_Squash
 
         }
 
+        private void SubmitButton_Clicked(object sender, EventArgs e)
+        {
+
+            currentgamestate = gamestate.startscreen;
+
+        }
+
         private void DrawHighScores()
         {
             int Yaxis = 60;
@@ -211,6 +245,10 @@ namespace Full_Fruity_Squash
                 case gamestate.highScore:
                     BackButton.Update(gameTime);
                     break;
+                case gamestate.ScoreEntry:
+                    TextEntry.Update(gameTime);
+                    SubmitButton.Update(gameTime);
+                    break;
                 case gamestate.gameover:
                     break;
                 default:
@@ -239,6 +277,12 @@ namespace Full_Fruity_Squash
                 case gamestate.highScore:
                     BackButton.Draw(spriteBatch);
                     DrawHighScores();
+                    break;
+                case gamestate.ScoreEntry:
+                    TextEntry.Draw(spriteBatch,gameTime);
+                    SubmitButton.Draw(spriteBatch);
+                    spriteBatch.DrawString(HighScoreFont, "Enter Name : ", new Vector2(Device.PresentationParameters.BackBufferWidth/3 -5, Device.PresentationParameters.BackBufferHeight / 2 - 50), Color.Black);
+                    spriteBatch.DrawString(HighScore, "Score : ", new Vector2(Device.PresentationParameters.BackBufferWidth / 3 +10, Device.PresentationParameters.BackBufferHeight/4 - 50), Color.Black);
                     break;
                 case gamestate.gameover:
                     break;

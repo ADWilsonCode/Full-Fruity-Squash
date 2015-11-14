@@ -90,6 +90,7 @@
     <Reference Include="mscorlib">
       <Private>False</Private>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
@@ -118,6 +119,7 @@
     <Compile Include="Fruit Classes\Fruit.cs" />
     <Compile Include="Fruit Classes\Orange.cs" />
     <Compile Include="HighScore.cs" />
+    <Compile Include="KeyboardLayout.cs" />
     <Compile Include="OrangeBlender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
@@ -126,6 +128,7 @@
     <Compile Include="Fruit Classes\Rotten Banana.cs" />
     <Compile Include="Fruit Classes\Rotten Orange.cs" />
     <Compile Include="Sprite.cs" />
+    <Compile Include="TextBoxClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
