@@ -38,18 +38,18 @@ namespace Full_Fruity_Squash
             isAlive = true;
         }
 
-        protected virtual void Fall(GameTime gameTime)
+        public virtual void Fall(GameTime gameTime)
          {
              velocity = new Vector2(0, 5);
              position += velocity;
          }
 
-        protected virtual void Caught(GameTime gameTime)
+        public virtual void Caught(GameTime gameTime)
         {
             //TODO: add code to follow the position of the player
         }
 
-        protected virtual void Dropped(GameTime gameTime)
+        public virtual void Dropped(GameTime gameTime)
         {
             velocity = new Vector2(0, 5);
             position += velocity;
@@ -60,7 +60,7 @@ namespace Full_Fruity_Squash
             isAlive = false;
         }
 
-         protected override void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
          {
              switch(currentState)
              {
@@ -78,7 +78,7 @@ namespace Full_Fruity_Squash
              base.Update(gameTime);
          }
 
-         protected override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
          {
              base.Draw(spriteBatch);
          }

@@ -29,6 +29,13 @@ namespace Full_Fruity_Squash
         Rotten_Banana dumpBanna;
         Rotten_Orange dumpOrange;
 
+        BananaBlender bananaBlender;
+        AppleBlender appleBlender;
+        OrangeBlender orangeBlender;
+
+        Bin bin1;
+        Bin bin2;
+
         public enum gamestate
         {
             startscreen,
@@ -66,32 +73,52 @@ namespace Full_Fruity_Squash
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
           Background = new Sprite (
-                Content.Load<Texture2D>("Background"),
+                Content.Load<Texture2D>("BackGround"),
                 Vector2.Zero);
 
           pickOrange = new Orange(
-              Content.Load<Texture2D>("OrangeBall"),
+              Content.Load<Texture2D>("orange"),
               Vector2.Zero);
 
           pickBanna = new Banana(
-              Content.Load<Texture2D>("YellowBall"),
+              Content.Load<Texture2D>("bananas"),
               Vector2.Zero);
 
           pickApple = new Apple(
-              Content.Load<Texture2D>("GreenBall"),
+              Content.Load<Texture2D>("apple"),
               Vector2.Zero);
 
           dumpApple = new Rotten_Apple(
-              Content.Load<Texture2D>("BlackBall"),
+              Content.Load<Texture2D>("rottenApple"),
               Vector2.Zero);
 
           dumpBanna = new Rotten_Banana(
-              Content.Load<Texture2D>("BlackBall"),
+              Content.Load<Texture2D>("rottenbanana"),
               Vector2.Zero);
 
           dumpOrange = new Rotten_Orange(
-              Content.Load<Texture2D>("BlackBall"),
+              Content.Load<Texture2D>("rottenOrange"),
               Vector2.Zero);
+
+          appleBlender = new AppleBlender(
+              Content.Load<Texture2D>("AppleBlender"),
+              Vector2.Zero);
+
+          bananaBlender = new BananaBlender(
+              Content.Load<Texture2D>("BananaBlender"),
+              Vector2.Zero);
+
+          orangeBlender = new OrangeBlender(
+              Content.Load<Texture2D>("OrangeBlender"),
+              Vector2.Zero);
+
+          bin1 = new Bin(
+              Content.Load<Texture2D>("bin2"),
+              Vector2.Zero);
+
+         bin2 = new Bin(
+        Content.Load<Texture2D>("bin2"),
+        Vector2.Zero);
         }
 
         /// <summary>
